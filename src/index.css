@@ -1,0 +1,54 @@
+.carousel-item img {
+  height: 520px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+
+.carousel-caption {
+  bottom: 30%;
+}
+
+.carousel-caption h2 {
+  font-size: 48px;
+  font-weight: 700;
+}
+/* HEADER */
+.header {
+  background-color: #111;
+  padding: 14px 0;
+}
+
+.header-logo {
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+
+.nav-link {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ddd !important;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #fff !important;
+}
+
+.header-icons {
+  display: flex;
+  gap: 18px;
+  font-size: 18px;
+  color: #fff;
+}
+
+.header-icons i {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.header-icons i:hover {
+  transform: scale(1.15);
+}
