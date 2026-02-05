@@ -1,0 +1,7 @@
+
+.promo-banner {
+  height: 300px;
+  background-image: url("./assets/images/hero/hero1.png");
+  background-size: cover;
+  background-position: center;
+}

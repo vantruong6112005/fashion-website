@@ -1,0 +1,47 @@
+.hero {
+  padding-top: 60px;   /* đúng bằng chiều cao header */
+}
+/* HERO CAROUSEL */
+#heroCarousel {
+  position: relative;
+}
+
+/* Ảnh không bị cụt người */
+#heroCarousel .carousel-item img {
+  height: 520px;
+  object-fit: cover;
+  object-position: center top;
+}
+/* LỚP PHỦ GIÚP CHỮ DỄ ĐỌC */
+#heroCarousel .carousel-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* NỘI DUNG TRÊN HERO */
+#heroCarousel .carousel-caption {
+  bottom: 30%;
+  z-index: 2;
+}
+
+#heroCarousel .carousel-caption h2 {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+#heroCarousel .carousel-caption .btn {
+  margin-top: 12px;
+}
+
+#heroCarousel .carousel-item::after {
+  background: rgba(0, 0, 0, 0.25);
+}
+#heroCarousel .carousel-caption {
+  text-align: left;
+  bottom: 5%;
+  left: 8%;
+  right: auto;
+}

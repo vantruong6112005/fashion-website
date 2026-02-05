@@ -1,7 +1,7 @@
 import hero1 from '../assets/images/hero/hero1.png'
 import hero2 from '../assets/images/hero/hero2.png'
 import hero3 from '../assets/images/hero/hero3.png'
-
+import "../CSS/Hero.css"
 export default function Hero() {
   return (
     <div
@@ -33,8 +33,9 @@ export default function Hero() {
       <div className="carousel-inner">
         <div className="carousel-item active">
           <img src={hero1} className="d-block w-100" alt="Hero 1" />
+          {/* nội dung trên ảnh */}
           <div className="carousel-caption d-none d-md-block">
-            <h2></h2>
+            <h2>Hello Mọi Người</h2>
             <button className="btn btn-light">Xem thêm</button>
           </div>
         </div>

@@ -1,0 +1,27 @@
+.categories {
+  padding: 60px 0;
+  background: #f8f8f8;
+}
+
+.category-card {
+  height: 180px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.category-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* hover */
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
