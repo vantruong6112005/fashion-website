@@ -3,13 +3,13 @@ import facebookIcon from '../assets/images/icon/facebook.png'
 import instargramIcon from '../assets/images/icon/instagram.png'
 export default function Footer() {
   return (
-    <footer className="footer-fastionshop">
+    <footer className="footer-fashionShop">
       <div className="container py-5">
         <div className="row gy-4">
 
           {/* Cột 1 */}
           <div className="col-md-4">
-            <h3 className="fw-bold mb-3">fastionShop</h3>
+            <h3 className="fw-bold mb-3">FashionShop</h3>
             <p className="text-uppercase fw-semibold">
               Công ty cổ phần thời trang
             </p>
@@ -95,7 +95,7 @@ export default function Footer() {
         <hr className="border-secondary mt-4" />
 
         <p className="text-center text-secondary mb-0">
-          © {new Date().getFullYear()} fastionShop. All rights reserved.
+          © {new Date().getFullYear()} fashionShop. All rights reserved.
         </p>
       </div>
     </footer>

@@ -1,0 +1,74 @@
+.newsletter-section {
+  position: relative;
+  padding: 80px 0;
+  background: url('../assets/images/jack.jpg') center/cover no-repeat;
+  overflow: hidden;
+}
+
+/* overlay tối */
+.newsletter-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+/* content nổi lên trên overlay */
+.newsletter-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* box đăng ký */
+.newsletter-box {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 32px;
+  color: #fff;
+  max-width: 420px;
+}
+
+.newsletter-box h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.newsletter-box p {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+/* input */
+.newsletter-box input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  margin-bottom: 16px;
+}
+
+/* button */
+.newsletter-box button {
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.newsletter-box button:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* ảnh người mẫu */
+.newsletter-img {
+  max-height: 420px;
+  object-fit: contain;
+}

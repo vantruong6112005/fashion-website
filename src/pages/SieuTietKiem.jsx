@@ -5,16 +5,14 @@ import FeaturedProducts from '../components/FeaturedProducts'
 import PromoBanner from '../components/PromoBanner'
 import Footer from '../components/Footer'
 import CategoryTabs from '../components/CategoryTabs'
-import Newletter from '../components/Newsletter'
-export default function Home() {
+export default function SieuTietKiem() {
   return (
     <>
       <Header />
       <Hero />
-      {/* danh mục sản phẩm  */}
-     {/* <CategoryTabs /> */}
+   
       <FeaturedProducts />
-      <Newletter />
+  
       <Footer />
     </>
   )
