@@ -1,11 +1,11 @@
-import '../css/categories.css'
+import '../CSS/categories.css'
 
 export default function Categories() {
   return (
     <section className="categories">
 
       <div className="container">
-        
+
         <div className="row g-4">
 
           <div className="col-md-3">

@@ -1,3 +1,5 @@
+
+
 import '../CSS/header.css'
 
 export default function Header() {
@@ -7,7 +9,7 @@ export default function Header() {
 
         {/* LEFT: LOGO */}
         <div className="header-left">
-          <span className="logo">NGUYỄN VĂN TRƯỜNG</span>
+          <span className="logo">Fashtion</span>
         </div>
 
         {/* CENTER: MENU */}

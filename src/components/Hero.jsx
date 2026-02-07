@@ -1,80 +1,60 @@
+import { useEffect, useState } from 'react'
 import hero1 from '../assets/images/hero/hero1.png'
 import hero2 from '../assets/images/hero/hero2.png'
 import hero3 from '../assets/images/hero/hero3.png'
-import "../CSS/Hero.css"
+import '../CSS/Hero.css'
+
+const slides = [
+  {
+    title: 'ÁO POLO\nNĂNG ĐỘNG',
+    image: hero2
+  },
+  {
+    title: 'VESTON\nLỊCH LÃM',
+    image: hero1
+  },
+  {
+    title: 'PHONG CÁCH\nDOANH NHÂN',
+    image: hero3
+  }
+]
+
 export default function Hero() {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex(i => (i + 1) % slides.length)
+    }, 5000) // 5s cho sang
+
+    return () => clearInterval(timer)
+  }, [])
+
+  const slide = slides[index]
+
   return (
-    <div
-      id="heroCarousel"
-      className="carousel slide"
-      data-bs-ride="carousel"
-    >
+    <section className="hero-owen">
+      <div className="container">
+        <div key={index} className="hero-content">
 
-      <div className="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#heroCarousel"
-          data-bs-slide-to="0"
-          className="active"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#heroCarousel"
-          data-bs-slide-to="1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#heroCarousel"
-          data-bs-slide-to="2"
-        ></button>
-      </div>
-
-      {/* slides */}
-      <div className="carousel-inner">
-        <div className="carousel-item active">
-          <img src={hero1} className="d-block w-100" alt="Hero 1" />
-          {/* nội dung trên ảnh */}
-          <div className="carousel-caption d-none d-md-block">
-            <h2>Hello Mọi Người</h2>
-            <button className="btn btn-light">Xem thêm</button>
+          <div className="hero-text">
+            <h1>
+              {slide.title.split('\n').map((line, i) => (
+                <span key={i}>
+                  {line}
+                  <br />
+                </span>
+              ))}
+            </h1>
+            <button className="btn-hero">Xem thêm</button>
           </div>
-        </div>
 
-        <div className="carousel-item">
-          <img src={hero2} className="d-block w-100" alt="Hero 2" />
-          <div className="carousel-caption d-none d-md-block">
-            <h2>VESTON LỊCH LÃM</h2>
-            <button className="btn btn-light">Xem thêm</button>
+          <div className="hero-image">
+            <img src={slide.image} alt="Hero" />
           </div>
-        </div>
 
-        <div className="carousel-item">
-          <img src={hero3} className="d-block w-100" alt="Hero 3" />
-          <div className="carousel-caption d-none d-md-block">
-            <h2>PHONG CÁCH DOANH NHÂN</h2>
-            <button className="btn btn-light">Xem thêm</button>
-          </div>
         </div>
       </div>
-
-      {/* controls */}
-      <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#heroCarousel"
-        data-bs-slide="prev"
-      >
-        <span className="carousel-control-prev-icon"></span>
-      </button>
-
-      <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#heroCarousel"
-        data-bs-slide="next"
-      >
-        <span className="carousel-control-next-icon"></span>
-      </button>
-    </div>
+    </section>
   )
 }

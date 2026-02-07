@@ -3,8 +3,6 @@ import '../CSS/categoryTabs.css'
 
 const TABS = [
   'Hàng mới về',
-  'Bộ sưu tập',
-  'BST Retro vacation',
   'Giá tốt',
   'Áo',
   'Quần',

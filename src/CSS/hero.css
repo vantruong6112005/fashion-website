@@ -1,47 +1,79 @@
-.hero {
-  padding-top: 60px;   /* đúng bằng chiều cao header */
-}
-/* HERO CAROUSEL */
-#heroCarousel {
-  position: relative;
+.hero-owen {
+  background: #f5f5f5;
+  padding: 80px 0 40px;
+  overflow: hidden;
 }
 
-/* Ảnh không bị cụt người */
-#heroCarousel .carousel-item img {
-  height: 520px;
-  object-fit: cover;
-  object-position: center top;
-}
-/* LỚP PHỦ GIÚP CHỮ DỄ ĐỌC */
-#heroCarousel .carousel-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+/* layout */
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+
+  animation: fadeSlide 0.6s ease;
 }
 
-/* NỘI DUNG TRÊN HERO */
-#heroCarousel .carousel-caption {
-  bottom: 30%;
-  z-index: 2;
+/* animation */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-#heroCarousel .carousel-caption h2 {
-  font-size: 42px;
+/* text */
+.hero-text h1 {
+  font-size: 56px;
   font-weight: 700;
-  letter-spacing: 2px;
+  line-height: 1.2;
+  color: #9b1c1c;
+  transform: translateX(60px);
 }
 
-#heroCarousel .carousel-caption .btn {
-  margin-top: 12px;
+/* button */
+.btn-hero {
+  margin-top: 24px;
+  padding: 12px 28px;
+  border: none;
+  background: #9b1c1c;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transform: translateX(60px);
 }
 
-#heroCarousel .carousel-item::after {
-  background: rgba(0, 0, 0, 0.25);
+/* image */
+.hero-image {
+  display: flex;
+  justify-content: center;
 }
-#heroCarousel .carousel-caption {
-  text-align: left;
-  bottom: 5%;
-  left: 8%;
-  right: auto;
+
+.hero-image img {
+  max-width: 440px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transform: translateX(60px);
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .hero-content  {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-image {
+    order: -1;
+  }
+
+  .hero-text h1 {
+    font-size: 40px;
+  }
 }
