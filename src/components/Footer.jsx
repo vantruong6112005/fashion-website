@@ -1,18 +1,21 @@
 import '../CSS/footer.css'
 import facebookIcon from '../assets/images/icon/facebook.png'
 import instargramIcon from '../assets/images/icon/instagram.png'
+
 export default function Footer() {
   return (
     <footer className="footer-fashionShop">
-      <div className="container py-5">
+      <div className="footer-overlay"></div>
+
+      <div className="container footer-content py-5">
         <div className="row gy-4">
 
-          {/* Cột 1 */}
           <div className="col-md-4">
             <h3 className="fw-bold mb-3">FashionShop</h3>
             <p className="text-uppercase fw-semibold">
               Công ty cổ phần thời trang
             </p>
+
             <p>📞 Hotline: <strong>1900 8079</strong></p>
             <p>🕒 8:30 – 19:00 (Tất cả các ngày)</p>
 
@@ -27,7 +30,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Cột 2 */}
           <div className="col-md-2">
             <h6 className="footer-title">GIỚI THIỆU</h6>
             <ul className="footer-list">
@@ -39,7 +41,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Cột 3 */}
           <div className="col-md-3">
             <h6 className="footer-title">HỖ TRỢ KHÁCH HÀNG</h6>
             <ul className="footer-list">
@@ -52,32 +53,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Cột 4 */}
           <div className="col-md-3">
             <h6 className="footer-title">KẾT NỐI</h6>
 
             <div className="d-flex gap-3 mb-4">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src={facebookIcon}
-                  alt="Facebook"
-                  className="social-icon"
-                />
+              <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                <img src={facebookIcon} alt="Facebook" className="social-icon" />
               </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src={instargramIcon}
-                  alt="Instagram"
-                  className="social-icon"
-                />
+              <a href="https://instagram.com" target="_blank" rel="noreferrer">
+                <img src={instargramIcon} alt="Instagram" className="social-icon" />
               </a>
             </div>
 
@@ -92,9 +76,9 @@ export default function Footer() {
 
         </div>
 
-        <hr className="border-secondary mt-4" />
+        <hr className="footer-divider" />
 
-        <p className="text-center text-secondary mb-0">
+        <p className="footer-copy">
           © {new Date().getFullYear()} fashionShop. All rights reserved.
         </p>
       </div>

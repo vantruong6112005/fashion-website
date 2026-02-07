@@ -5,6 +5,8 @@ import userIcon from "../assets/images/icon/user.png";
 import aoThun from '../assets/images/Ao/ao.png';
 import pk1 from"../assets/images/phuKien/pk1.png";
 import quan3 from"../assets/images/quan/quan.png";
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <header className="site-header">
@@ -18,7 +20,12 @@ export default function Header() {
         {/* CENTER */}
         <nav className="header-center">
           <ul className="nav-menu">
-            <li className="nav-item">Combo siêu tiết kiệm</li>
+
+            <li className="nav-item">
+               <Link to="/combo-sieu-tiet-kiem" className="nav-link">
+    Combo siêu tiết kiệm
+       </Link>
+  </li>
             <li className="nav-item">Hàng mới về</li>
 <li className="nav-item mega-dropdown">
   Áo
