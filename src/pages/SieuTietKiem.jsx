@@ -7,7 +7,7 @@ import '../CSS/sieuTietKiem.css'
 export default function SieuTietKiem() {
   return (
     <>
-      <Header />
+    
 
       <main className="stk-page">
         <section className="stk-hero">
@@ -119,7 +119,6 @@ export default function SieuTietKiem() {
         </section>
       </main>
 
-      <Footer />
     </>
   )
 }

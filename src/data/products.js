@@ -46,6 +46,26 @@ export const products = [
     price: 559000,
     image: aoThun,
     category: 'quan'
+  },
+  {
+    id: 7,
+    name: 'Quần short nam',
+    price: 299000,
+    image: aoThun,
+  },
+  {id: 8,
+    name: 'Áo khoác gió',
+    price: 699000,
+    image: aoThun,
+    category: 'ao',
+
+  },
+  {
+    id: 9,
+    name: 'Áo len cổ lọ',
+    price: 599000,
+    image: aoThun,
+    category: 'ao',
   }
 ]
 

@@ -1,7 +1,69 @@
+.shop-banner {
+  position: relative;
+  width: 100%;
+  height: 520px; /* cao hơn cho đã */
+  overflow: hidden;
+  background: #000;
+}
 
-.promo-banner {
-  height: 300px;
-  background-image: url("./assets/images/hero/hero1.png");
-  background-size: cover;
-  background-position: center;
+/* Ảnh */
+.shop-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center; /* ép chủ thể sang phải */
+  filter: brightness(0.85);
+}
+
+/* Overlay tối trái */
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+/* Nội dung */
+.banner-content {
+  position: absolute;
+  left: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  max-width: 520px;
+}
+
+.banner-content h1 {
+  font-size: 46px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.banner-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.95;
+  margin-bottom: 28px;
+}
+
+/* Button */
+.banner-btn {
+  padding: 14px 30px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.banner-btn:hover {
+  background: #000;
+  color: #fff;
 }

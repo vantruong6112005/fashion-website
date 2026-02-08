@@ -9,13 +9,13 @@ import Newletter from '../components/Newsletter'
 export default function Home() {
   return (
     <>
-      <Header />
+   
       <Hero />
       {/* danh mục sản phẩm  */}
      {/* <CategoryTabs /> */}
       <FeaturedProducts />
       <Newletter />
-      <Footer />
+     
     </>
   )
 }

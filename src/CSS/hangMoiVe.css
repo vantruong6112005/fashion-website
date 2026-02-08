@@ -1,0 +1,139 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+/* CONTAINER */
+.shop-container {
+  max-width: 1280px;
+  margin: 32px auto;
+  padding: 0 16px;
+
+  display: grid;
+  grid-template-columns: 260px 1fr;
+ 
+ gap: 48px;
+  align-items: flex-start;
+}
+
+.shop-sidebar {
+  position: sticky;
+  top: 96px;        /* khoảng cách từ trên xuống (dưới header) */
+  height: fit-content;
+}
+
+/* MAIN */
+.shop-main {
+  width: 100%;
+}
+
+/* TOOLBAR */
+.shop-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #555;
+}
+/* ===== FILTER SIDEBAR ===== */
+.shop-filter {
+  padding: 24px 0;
+}
+
+/* TITLE */
+.filter-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* SECTION */
+.filter-section {
+  margin-bottom: 24px;
+}
+
+.filter-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* SIZE GRID – GIỐNG OWEN */
+.size-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+/* SIZE BUTTON */
+.size-btn {
+  height: 36px;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  background: #fff;
+
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+/* HOVER */
+.size-btn:hover {
+  border-color: #000;
+}
+
+/* ACTIVE (chuẩn bị cho filter thật) */
+.size-btn.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+/* FILTER HEADER */
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.filter-reset {
+  cursor: pointer;
+  font-size: 14px;
+  color: #999;
+}
+
+/* FILTER BLOCK */
+.filter-block {
+  border-top: 1px solid #eee;
+  padding: 16px 0;
+}
+
+.filter-block-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* CHECKBOX */
+.filter-block label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.filter-block input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+.shop-sidebar {
+  margin-right: 50px; /* tăng/giảm 8–32px tùy ý */
+}

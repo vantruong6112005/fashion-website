@@ -14,7 +14,7 @@ export default function Header() {
 
         {/* LEFT */}
         <div className="header-left">
-          <span className="logo">FASHION-SHOP</span>
+          <span className="logo"><Link to="/">FASHION-SHOP</Link></span>
         </div>
 
         {/* CENTER */}
@@ -26,7 +26,7 @@ export default function Header() {
     Combo siêu tiết kiệm
        </Link>
   </li>
-            <li className="nav-item">Hàng mới về</li>
+            <li className="nav-item"><Link to="/hang-moi-ve" className="nav-link">Hàng mới về</Link></li>
 <li className="nav-item mega-dropdown">
   Áo
   <div className="mega-menu">
