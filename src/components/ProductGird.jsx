@@ -1,6 +1,6 @@
 import { useState } from "react";
 import products from "../data/products";
-
+import "../CSS/productGird.css";
 const PAGE_SIZE = 9;
 
 export default function ProductGrid() {
