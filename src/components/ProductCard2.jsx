@@ -70,7 +70,7 @@ const ProductCard2 = ({ product }) => {
         <div className="d-flex align-items-center gap-2 flex-wrap">
           {hasDiscount ? (
             <>
-              <span className="fw-bold small" style={{ color: "#f2f2f2" }}>
+              <span className="fw-bold small" style={{ color: "#00168d" }}>
                 {formatPrice(product.giaUuDai)}
               </span>
               <span

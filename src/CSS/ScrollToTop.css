@@ -6,7 +6,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #2f80ed;
+  background: #00168d;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -22,7 +22,7 @@
     background 0.2s;
   pointer-events: none;
   z-index: 999;
-  box-shadow: 0 4px 14px rgba(47, 128, 237, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 22, 141, 0.35);
 }
 
 .scroll-to-top--visible {
@@ -32,5 +32,5 @@
 }
 
 .scroll-to-top:hover {
-  background: #1a6fd4;
+  background: #00106b;
 }

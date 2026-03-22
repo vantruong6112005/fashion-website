@@ -80,7 +80,7 @@ body {
   text-transform: uppercase;
 }
 .logo a:hover {
-  color: #2f80ed !important;
+  color: #00168d !important;
 }
 
 /* ── Nav center ── */
@@ -134,7 +134,7 @@ body {
   left: 14px;
   right: 14px;
   height: 2px;
-  background: #2f80ed;
+  background: #00168d;
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.25s ease;
@@ -145,7 +145,7 @@ body {
 }
 .site-header .nav-item:hover > a,
 .site-header .nav-item:hover > span {
-  color: #2f80ed;
+  color: #00168d;
 }
 
 /* Small chevron on dropdown items */
@@ -157,6 +157,7 @@ body {
 }
 .nav-item:hover .nav-chevron {
   transform: rotate(180deg);
+  color: #00168d;
 }
 
 /* Special nav badges */
@@ -187,7 +188,7 @@ body {
   left: 0;
   width: 100%;
   background: #fff;
-  border-top: 2px solid #2f80ed;
+  border-top: 2px solid #00168d;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
   z-index: 9998;
 
@@ -239,7 +240,7 @@ body {
   transition: color 0.15s;
 }
 .mega-column h4 a:hover {
-  color: #2f80ed !important;
+  color: #00168d !important;
 }
 
 .mega-item {
@@ -255,7 +256,7 @@ body {
     padding-left 0.15s;
 }
 .mega-item a:hover {
-  color: #2f80ed !important;
+  color: #00168d !important;
   padding-left: 5px;
 }
 
@@ -373,7 +374,7 @@ body {
 }
 
 .header-search__suggestion-item:hover {
-  background: #f3f7ff;
+  background: #e9edff;
 }
 
 .mega-column h4 {
@@ -392,7 +393,7 @@ body {
 }
 
 .site-header a:hover {
-  color: #e6b8b8;
+  color: #00168d;
 }
 
 /*  */
