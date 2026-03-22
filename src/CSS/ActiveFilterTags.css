@@ -1,0 +1,15 @@
+.filter-tag__remove {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.filter-tag__remove:hover {
+  opacity: 1;
+}

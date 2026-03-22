@@ -1,4 +1,4 @@
-import '../CSS/productcart.css'
+import "../CSS/productcart.css";
 export default function ProductCard({ product }) {
   return (
     <div className="product-card">
@@ -15,5 +15,5 @@ export default function ProductCard({ product }) {
         <p>{product.price.toLocaleString()}đ</p>
       </div>
     </div>
-  )
+  );
 }

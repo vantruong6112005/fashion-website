@@ -1,6 +1,6 @@
 import ShopBanner from "../components/ShopBanner";
 import ShopFilter from "../components/ShopFilter";
-import ProductGrid from "../components/ProductGird";
+import ProductGrid from "../components/ProductGrid";
 
 import "../CSS/hangMoiVe.css";
 

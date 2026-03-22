@@ -14,7 +14,7 @@ export default function ProductGrid() {
   return (
     <>
       <div className="product-grid">
-        {currentProducts.map(p => (
+        {currentProducts.map((p) => (
           <div key={p.id} className="product-card">
             <img src={p.image} />
             <h4>{p.name}</h4>
