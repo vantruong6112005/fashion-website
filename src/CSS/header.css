@@ -183,7 +183,7 @@ body {
 ══════════════════════════════════════════════ */
 .mega-menu {
   position: fixed;
-  top: 96px; /* topbar 36 + header 60 */
+  top: 60px; /* align directly under current header height */
   left: 0;
   width: 100%;
   background: #fff;
