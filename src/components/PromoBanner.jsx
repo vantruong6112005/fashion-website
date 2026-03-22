@@ -3,7 +3,7 @@ import "../CSS/promoBanner.css";
 import { getMaxDiscount } from "../utils/promoUtils";
 
 const GRADIENTS = [
-  "linear-gradient(135deg, #2F80ED 0%, #1455a8 100%)",
+  "linear-gradient(135deg, #f2f2f2 0%, #1455a8 100%)",
   "linear-gradient(135deg, #1a1a2e 0%, #2d3561 100%)",
   "linear-gradient(135deg, #c0392b 0%, #96281b 100%)",
   "linear-gradient(135deg, #1e8449 0%, #117a65 100%)",

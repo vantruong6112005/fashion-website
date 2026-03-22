@@ -11,19 +11,17 @@ import useProductFilters, {
   applyDiscounts,
   filterActivePromotions,
 } from "../hooks/useProductFilters";
+import { API_BASE } from "../utils/api";
 
 import hero3 from "../assets/images/hero/hero3.png";
 import "../CSS/uuDai.css";
-
-// "http://localhost:3000/api"
-const API_BASE = "https://lzpower-fashion.onrender.com/api";
 
 const fetchActivePromos = async (signal) => {
   const { data } = await axios.get(`${API_BASE}/uu-dai`, { signal });
   return filterActivePromotions(data);
 };
 
-// ─── Countdown ───────────────────────────────────────────────────────────────
+// Countdown
 
 function useCountdown(target) {
   const [timeLeft, setTimeLeft] = useState(() =>
@@ -50,7 +48,7 @@ function useCountdown(target) {
   return { h, m, s };
 }
 
-// ─── Fetch Reducer ───────────────────────────────────────────────────────────
+// Fetch reducer
 
 const FETCH_INITIAL = { status: "idle", products: [], error: null };
 
@@ -67,7 +65,7 @@ function fetchReducer(state, action) {
   }
 }
 
-// ─── Deal card variants ───────────────────────────────────────────────────────
+// Deal card variants
 const CARD_VARIANTS = [
   "ud-deal-card--red",
   "ud-deal-card--dark",
@@ -95,7 +93,7 @@ const FALLBACK_DEALS = [
   },
 ];
 
-// ─── Component ───────────────────────────────────────────────────────────────
+// Component
 
 export default function UuDai() {
   const [fetchState, fetchDispatch] = useReducer(fetchReducer, FETCH_INITIAL);
@@ -195,7 +193,7 @@ export default function UuDai() {
 
   return (
     <>
-      {/* ── HERO ── */}
+      {/* Hero */}
       <section className="ud-hero">
         <div className="ud-container ud-hero__inner">
           <div className="ud-hero__copy">
@@ -241,10 +239,10 @@ export default function UuDai() {
         </div>
       </section>
 
-      {/* ── SLIDING PROMO BANNER ── */}
+      {/* Sliding promo banner */}
       <PromoBanner promos={promos} />
 
-      {/* ── DEAL CARDS ── */}
+      {/* Deal cards */}
       <section className="ud-deals">
         <div className="ud-container">
           <h2 className="ud-section-title">Ưu đãi nổi bật</h2>
@@ -281,7 +279,7 @@ export default function UuDai() {
         </div>
       </section>
 
-      {/* ── PROMO STRIP ── */}
+      {/* Promo strip */}
       <section className="ud-strip">
         <div className="ud-container ud-strip__inner">
           <p>
@@ -291,7 +289,7 @@ export default function UuDai() {
         </div>
       </section>
 
-      {/* ── PRODUCTS ── */}
+      {/* Products */}
       <section id="san-pham" className="ud-products">
         <div className="ud-container">
           <h2 className="ud-section-title">Tất cả sản phẩm ưu đãi</h2>

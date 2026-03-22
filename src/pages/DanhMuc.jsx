@@ -10,9 +10,7 @@ import useProductFilters, {
   applyDiscounts,
   filterActivePromotions,
 } from "../hooks/useProductFilters";
-
-// "http://localhost:3000/api"
-const API_BASE = "https://lzpower-fashion.onrender.com/api";
+import { API_BASE } from "../utils/api";
 
 const fetchActivePromos = async (signal) => {
   const { data } = await axios.get(`${API_BASE}/uu-dai`, { signal });

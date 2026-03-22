@@ -11,9 +11,7 @@ import aoThun from "../assets/images/Ao/ao.png";
 import quan3 from "../assets/images/quan/quan.png";
 import hero1 from "../assets/images/hero/hero1.png";
 import hero2 from "../assets/images/hero/hero2.png";
-
-// "http://localhost:3000/api"
-const API_BASE = "https://lzpower-fashion.onrender.com/api";
+import { API_BASE } from "../utils/api";
 
 const CATEGORY_CACHE_KEY = "fashion_categories_cache_v1";
 const FALLBACK_ROOT_CATEGORIES = [
@@ -109,7 +107,7 @@ export default function Header2() {
 
   return (
     <header className="site-header">
-      {/* ── Announcement bar ── */}
+      {/* Announcement bar */}
       {/* <div className="header-topbar">
         <span className="header-topbar__item">Miễn phí vận chuyển từ 299K</span>
         <span className="header-topbar__sep">|</span>
@@ -118,16 +116,16 @@ export default function Header2() {
         <span className="header-topbar__item">Thanh toán khi nhận hàng</span>
       </div> */}
 
-      {/* ── Main header ── */}
+      {/* Main header */}
       <div className="header-inner">
-        {/* LEFT – Logo */}
+        {/* Left logo */}
         <div className="header-left">
           <span className="logo">
             <Link to="/">FASHION-SHOP</Link>
           </span>
         </div>
 
-        {/* CENTER – Nav */}
+        {/* Center nav */}
         <nav className="header-center">
           <ul className="nav-menu">
             <li className="nav-item">

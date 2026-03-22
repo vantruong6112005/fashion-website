@@ -3,9 +3,7 @@ import { useMemo, useState, useEffect } from "react";
 import { breadcrumbMap } from "./breadcrumbMap";
 import homeIcon from "../assets/images/icon/home.svg";
 import "../css/Breadcrumb.css";
-
-// "http://localhost:3000/api"
-const API_BASE = "https://lzpower-fashion.onrender.com/api";
+import { API_BASE } from "../utils/api";
 
 function Breadcrumb() {
   const { pathname } = useLocation();

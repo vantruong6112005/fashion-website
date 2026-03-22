@@ -1,6 +1,8 @@
 import { useState, useMemo } from "react";
 import "../css/ProductGrid.css";
 import { Link } from "react-router-dom";
+import { API_HOST } from "../utils/api";
+
 const formatPrice = (n) => n.toLocaleString("vi-VN") + "đ";
 
 const ProductCard2 = ({ product }) => {
@@ -25,14 +27,14 @@ const ProductCard2 = ({ product }) => {
         <Link to={`/san-pham/${product._id}`}>
           <img
             className="product-card__image img-fluid object-fit-cover"
-            src={`https://lzpower-fashion.onrender.com${currentImage}`}
+            src={`${API_HOST}${currentImage}`}
             alt={product.tenSanPham}
           />
         </Link>
         {hasDiscount && (
           <span
             className="position-absolute top-0 start-0 m-2 badge"
-            style={{ background: "#2F80ED", fontSize: "12px" }}
+            style={{ background: "#f2f2f2", fontSize: "12px" }}
           >
             -{product.discountPct}%
           </span>
@@ -68,7 +70,7 @@ const ProductCard2 = ({ product }) => {
         <div className="d-flex align-items-center gap-2 flex-wrap">
           {hasDiscount ? (
             <>
-              <span className="fw-bold small" style={{ color: "#2F80ED" }}>
+              <span className="fw-bold small" style={{ color: "#f2f2f2" }}>
                 {formatPrice(product.giaUuDai)}
               </span>
               <span

@@ -26,6 +26,12 @@ const toTimestamp = (value) => {
   return Number.isNaN(parsed) ? 0 : parsed;
 };
 
+const getEffectivePrice = (product) => {
+  const salePrice = toNumber(product?.giaUuDai);
+  if (salePrice > 0) return salePrice;
+  return toNumber(product?.gia);
+};
+
 const toTitleCase = (text) =>
   text ? text.charAt(0).toUpperCase() + text.slice(1).toLowerCase() : "";
 
@@ -168,9 +174,11 @@ export function applyFilters(products, filters) {
     }
     if (filters.boLocGia.length) {
       const match = filters.boLocGia.some((range) => {
-        if (range === "under_300") return p.gia < 300000;
-        if (range === "300_500") return p.gia >= 300000 && p.gia <= 500000;
-        if (range === "over_500") return p.gia > 500000;
+        const effectivePrice = getEffectivePrice(p);
+        if (range === "under_300") return effectivePrice < 300000;
+        if (range === "300_500")
+          return effectivePrice >= 300000 && effectivePrice <= 500000;
+        if (range === "over_500") return effectivePrice > 500000;
         return false;
       });
       if (!match) return false;
@@ -259,9 +267,13 @@ export default function useProductFilters(products, options = {}) {
   const sortedProducts = useMemo(() => {
     const filtered = applyFilters(products, activeFilters);
     if (sortBy === "price_asc")
-      return [...filtered].sort((a, b) => a.gia - b.gia);
+      return [...filtered].sort(
+        (a, b) => getEffectivePrice(a) - getEffectivePrice(b),
+      );
     if (sortBy === "price_desc")
-      return [...filtered].sort((a, b) => b.gia - a.gia);
+      return [...filtered].sort(
+        (a, b) => getEffectivePrice(b) - getEffectivePrice(a),
+      );
     if (sortBy === "discount")
       return [...filtered].sort(
         (a, b) => (b.discountPct ?? 0) - (a.discountPct ?? 0),

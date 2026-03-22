@@ -12,11 +12,9 @@ import useProductFilters, {
   filterActivePromotions,
   matchesRelativeSearch,
 } from "../hooks/useProductFilters";
+import { API_BASE } from "../utils/api";
 
 import "../CSS/hangMoiVe.css";
-
-// "http://localhost:3000/api"
-const API_BASE = "https://lzpower-fashion.onrender.com/api";
 
 const fetchActivePromos = async (signal) => {
   const { data } = await axios.get(`${API_BASE}/uu-dai`, { signal });

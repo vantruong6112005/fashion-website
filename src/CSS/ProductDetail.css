@@ -1,8 +1,6 @@
-/* ════════════════════════════════════════════════════════════
-   ProductDetail.css  –  Coolmate-inspired product detail page
-   ════════════════════════════════════════════════════════════ */
+/* ProductDetail.css */
 
-/* ── Variables ─────────────────────────────────────────────── */
+/* Bien mau va kich thuoc */
 :root {
   --pd-black: #111111;
   --pd-gray: #6b7280;
@@ -16,7 +14,7 @@
   --pd-transition: 0.2s ease;
 }
 
-/* ── Loading ────────────────────────────────────────────────── */
+/* Trang thai loading */
 .pd-loading {
   display: flex;
   flex-direction: column;
@@ -40,7 +38,7 @@
   }
 }
 
-/* ── Breadcrumb ─────────────────────────────────────────────── */
+/* Breadcrumb */
 .pd-breadcrumb {
   display: flex;
   align-items: center;
@@ -62,7 +60,7 @@
   font-weight: 500;
 }
 
-/* ── Main layout ─────────────────────────────────────────────── */
+/* Bo cuc chinh */
 .pd-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -76,7 +74,7 @@
   }
 }
 
-/* ── Gallery ────────────────────────────────────────────────── */
+/* Gallery */
 .pd-gallery {
   display: flex;
   gap: 12px;
@@ -207,7 +205,7 @@
   }
 }
 
-/* ── Info panel ─────────────────────────────────────────────── */
+/* Khung thong tin san pham */
 .pd-layout__info {
   display: flex;
   flex-direction: column;
@@ -222,7 +220,7 @@
   margin: 0 0 8px;
 }
 
-/* Stars */
+/* Danh gia sao */
 .pd-stars {
   margin-bottom: 12px;
 }
@@ -231,7 +229,7 @@
   color: var(--pd-gray);
 }
 
-/* Price */
+/* Gia */
 .pd-price-block {
   display: flex;
   align-items: center;
@@ -260,7 +258,7 @@
   border-radius: 20px;
 }
 
-/* Section label */
+/* Tieu de cac nhom thong tin */
 .pd-section {
   margin-bottom: 16px;
 }
@@ -271,7 +269,7 @@
   margin-bottom: 10px;
 }
 
-/* Color buttons */
+/* Nut mau */
 .pd-colors {
   display: flex;
   flex-wrap: wrap;
@@ -306,7 +304,7 @@
   flex-shrink: 0;
 }
 
-/* Sizes */
+/* Nut size */
 .pd-sizes {
   display: flex;
   flex-wrap: wrap;
@@ -341,7 +339,7 @@
   cursor: not-allowed;
 }
 
-/* Sizes error flash */
+/* Hieu ung bao loi khi chua chon size */
 .pd-sizes--error .pd-size-btn {
   border-color: var(--pd-red);
   animation: pd-shake 0.3s ease;
@@ -374,7 +372,7 @@
   color: var(--pd-green);
 }
 
-/* CTA Row */
+/* Cum nut hanh dong */
 .pd-cta-row {
   display: flex;
   gap: 12px;
@@ -447,7 +445,7 @@
   opacity: 0.85;
 }
 
-/* USPs */
+/* Uu diem noi bat */
 .pd-usps {
   margin-top: 16px;
   display: flex;
@@ -469,9 +467,12 @@
   flex-shrink: 0;
 }
 
-/* ── Accordion ───────────────────────────────────────────────── */
+/* Accordion thong tin */
 .pd-accordions {
   border-top: 1px solid var(--pd-border);
+}
+.pd-accordions--below {
+  margin-top: 26px;
 }
 .pd-accordion {
   border-bottom: 1px solid var(--pd-border);
@@ -479,25 +480,17 @@
 .pd-accordion__toggle {
   all: unset;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
+  display: block;
   align-items: center;
   width: 100%;
   padding: 14px 0;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 17px;
   color: var(--pd-black);
-}
-.pd-accordion__icon {
-  flex-shrink: 0;
-  transition: transform var(--pd-transition);
-}
-.pd-accordion__icon--open {
-  transform: rotate(180deg);
 }
 .pd-accordion__body {
   padding-bottom: 14px;
-  font-size: 13.5px;
+  font-size: 14.5px;
   color: #374151;
   line-height: 1.7;
 }
@@ -514,14 +507,72 @@
   margin: 0;
 }
 
+.pd-description-section {
+  border-bottom: 1px solid var(--pd-border);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.pd-description-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--pd-black);
+  margin: 0 0 14px;
+}
 .pd-description {
-  font-size: 13.5px;
+  font-size: 14.5px;
   line-height: 1.8;
+}
+.pd-description-wrap {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.pd-description--collapsed {
+  position: relative;
+  max-height: 364px;
+  overflow: hidden;
+}
+.pd-description--collapsed::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 73px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+  pointer-events: none;
+}
+.pd-description__toggle {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 14px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--pd-black);
+  background: var(--pd-black);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  transition:
+    background var(--pd-transition),
+    transform var(--pd-transition),
+    box-shadow var(--pd-transition);
+}
+.pd-description__toggle:hover {
+  background: #2a2a2a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
 }
 .pd-description img {
   max-width: 100%;
   border-radius: 6px;
-  margin: 10px 0;
+  margin: 10px auto;
+  display: block;
 }
 .pd-description h2 {
   font-size: 17px;
@@ -531,50 +582,170 @@
   padding-left: 20px;
 }
 
-/* ── Reviews ────────────────────────────────────────────────── */
+/* Danh gia */
 .pd-reviews {
-  border-top: 2px solid var(--pd-border);
-  padding-top: 32px;
+  margin-top: 34px;
+  padding: 24px;
+  border: 1px solid var(--pd-border);
+  border-radius: 12px;
+  background: #f2f2f2;
 }
-.pd-reviews__title {
-  font-size: 20px;
+
+.pd-reviews__body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 28px;
+}
+
+.pd-reviews__sidebar {
+  border: 1px solid var(--pd-border);
+  border-radius: 14px;
+  padding: 16px 14px;
+  background: #fff;
+  height: fit-content;
+  position: sticky;
+  top: 108px;
+}
+
+.pd-reviews__sidebar-title {
+  margin: 0 0 12px;
+  font-size: 15px;
   font-weight: 700;
+}
+
+.pd-reviews__sidebar-row {
+  display: grid;
+  grid-template-columns: 16px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+}
+
+.pd-reviews__sidebar-stars-num {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.pd-reviews__sidebar-stars-icons {
   display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.pd-reviews__sidebar-stars-icons img {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+}
+
+.pd-reviews__sidebar-count {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.pd-reviews__main {
+  min-width: 0;
+}
+
+.pd-reviews__overview {
+  display: grid;
+  grid-template-columns: 1.1fr 1.8fr 1.4fr;
+  gap: 28px;
+  align-items: start;
+  padding: 4px 0 16px;
+}
+
+.pd-reviews__heading {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.pd-reviews__score-wrap {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.pd-reviews__score-num {
+  font-size: 72px;
+  line-height: 0.95;
+  font-weight: 800;
+  color: #000;
+}
+
+.pd-reviews__score-stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.pd-reviews__score-note {
+  margin: 6px 0 0;
+  font-size: 16px;
+  color: #4b5563;
+}
+
+.pd-reviews__fit-title {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.pd-reviews__fit-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 46px;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
-.pd-reviews__badge {
-  background: var(--pd-black);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 20px;
+
+.pd-reviews__fit-label {
+  font-size: 15px;
+  color: #374151;
 }
-.pd-reviews__summary {
-  margin-bottom: 20px;
+
+.pd-reviews__fit-bar {
+  height: 10px;
+  background: #d4d4d4;
+  border-radius: 999px;
+  overflow: hidden;
 }
-.pd-reviews__score {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+
+.pd-reviews__fit-fill {
+  display: block;
+  height: 100%;
+  background: #000;
+  border-radius: 999px;
 }
-.pd-reviews__score-num {
-  font-size: 48px;
-  font-weight: 800;
-  line-height: 1;
+
+.pd-reviews__fit-value {
+  text-align: right;
+  font-size: 15px;
 }
+
+.pd-reviews__toolbar {
+  margin: 12px 0 14px;
+}
+
+.pd-reviews__showing {
+  font-size: 16px;
+  color: #4b5563;
+}
+
 .pd-reviews__list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .pd-review-card {
-  border: 1px solid var(--pd-border);
-  border-radius: var(--pd-radius);
-  padding: 16px;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  padding: 22px 24px;
   background: #fff;
   transition: box-shadow var(--pd-transition);
 }
@@ -603,13 +774,84 @@
   color: var(--pd-gray);
 }
 .pd-review-card__content {
-  font-size: 14px;
-  color: #374151;
-  line-height: 1.6;
+  font-size: 16px;
+  color: #111827;
+  line-height: 1.5;
   margin: 0;
 }
 
-/* ── Modal ──────────────────────────────────────────────────── */
+.pd-reviews__pagination {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pd-reviews__page-btn {
+  all: unset;
+  cursor: pointer;
+  border: 1px solid var(--pd-border);
+  border-radius: 10px;
+  min-width: 36px;
+  padding: 8px 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.pd-reviews__page-btn:hover:not(:disabled) {
+  border-color: #9ca3af;
+}
+
+.pd-reviews__page-btn--active {
+  color: #fff;
+  background: #111;
+  border-color: #111;
+}
+
+.pd-reviews__page-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1200px) {
+  .pd-reviews__body {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-reviews__sidebar {
+    position: static;
+  }
+
+  .pd-reviews__overview {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .pd-reviews__heading {
+    font-size: 28px;
+  }
+
+  .pd-reviews__score-num {
+    font-size: 64px;
+  }
+
+  .pd-reviews__score-note {
+    font-size: 18px;
+  }
+
+  .pd-review-card__content {
+    font-size: 16px;
+  }
+
+  .pd-reviews__showing {
+    font-size: 16px;
+  }
+}
+
+/* Modal huong dan size */
 .pd-modal-overlay {
   position: fixed;
   inset: 0;
