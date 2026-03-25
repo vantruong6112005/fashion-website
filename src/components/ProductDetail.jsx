@@ -8,7 +8,8 @@ import ProductInfoAccordions from "./productDetail/ProductInfoAccordions";
 import ProductReviewsSection from "./productDetail/ProductReviewsSection";
 import SizeGuideModal from "./productDetail/SizeGuideModal";
 import StarRating from "./productDetail/StarRating";
-import { API_BASE } from "../utils/api";
+import { API_BASE, API_HOST } from "../utils/api";
+import { useCart } from "../context/CartContext";
 
 const REVIEWS_PER_PAGE = 10;
 const USP_ITEMS = [
@@ -23,6 +24,7 @@ const fmt = (n) => Number(n)?.toLocaleString("vi-VN") + "đ";
 
 export default function ProductDetail() {
   const { id } = useParams();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -148,6 +150,17 @@ export default function ProductDetail() {
       }, 1200);
       return;
     }
+
+    addToCart({
+      productId: product._id?.$oid ?? product._id ?? id,
+      name: product.tenSanPham,
+      image: `${API_HOST}${currentImages[0]}`,
+      price: gia,
+      quantity: qty,
+      colorCode: selectedColor,
+      colorName: currentVariant?.tenMau,
+      size: selectedSize,
+    });
 
     setAddedToCart(true);
     setTimeout(() => setAddedToCart(false), 2000);

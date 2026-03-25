@@ -12,6 +12,7 @@ import quan3 from "../assets/images/quan/quan.png";
 import hero1 from "../assets/images/hero/hero1.png";
 import hero2 from "../assets/images/hero/hero2.png";
 import { API_BASE } from "../utils/api";
+import { useCart } from "../context/CartContext";
 
 const CATEGORY_CACHE_KEY = "fashion_categories_cache_v1";
 const FALLBACK_ROOT_CATEGORIES = [
@@ -34,6 +35,7 @@ const readCategoryCache = () => {
 
 export default function Header2() {
   const navigate = useNavigate();
+  const { totalItems } = useCart();
   const [categories, setCategories] = useState(
     () => readCategoryCache() ?? FALLBACK_ROOT_CATEGORIES,
   );
@@ -268,9 +270,19 @@ export default function Header2() {
             )}
           </form>
 
-          <button className="icon-btn" title="Giỏ hàng">
+          <Link
+            to="/gio-hang"
+            className="icon-btn position-relative"
+            title="Giỏ hàng"
+            aria-label="Giỏ hàng"
+          >
             <img src={cartIcon} alt="cart" />
-          </button>
+            {totalItems > 0 && (
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
+                {totalItems}
+              </span>
+            )}
+          </Link>
           <button className="icon-btn" title="Tài khoản">
             <img src={userIcon} alt="user" />
           </button>
