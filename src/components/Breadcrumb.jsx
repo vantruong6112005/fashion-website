@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import { useMemo, useState, useEffect } from "react";
-import { breadcrumbMap } from "./breadcrumbMap";
+import { breadcrumbMap } from "../data/breadcrumbMap";
 import homeIcon from "../assets/images/icon/home.svg";
-import "../css/Breadcrumb.css";
-import { API_BASE } from "../utils/api";
+import { API_BASE } from "../api";
+import "../CSS/Breadcrumb.css";
 
 function Breadcrumb() {
   const { pathname } = useLocation();
@@ -47,11 +47,14 @@ function Breadcrumb() {
   if (!pathnames.length) return null;
 
   return (
-    <nav aria-label="Breadcrumb">
-      <ol className="breadcrumb__list">
-        <li className="breadcrumb__item">
-          <Link to="/" className="breadcrumb__link">
-            <img src={homeIcon} alt="Home" width={20} />
+    <nav aria-label="breadcrumb" className="app-breadcrumb py-2">
+      <ol className="breadcrumb mb-0 align-items-center">
+        <li className="breadcrumb-item">
+          <Link
+            to="/"
+            className="text-decoration-none text-secondary d-inline-flex align-items-center"
+          >
+            <img src={homeIcon} alt="Home" width={20} className="d-block" />
           </Link>
         </li>
 
@@ -64,14 +67,15 @@ function Breadcrumb() {
               : breadcrumbMap[segment] || segment;
 
           return (
-            <li key={to} className="breadcrumb__item">
-              <span style={{ color: "#ccc" }} className="mx-2">
-                {">"}
-              </span>
+            <li
+              key={to}
+              className={`breadcrumb-item ${isLast ? "active" : ""}`}
+              {...(isLast ? { "aria-current": "page" } : {})}
+            >
               {isLast ? (
-                <span className="breadcrumb__current">{label}</span>
+                <span className="fw-semibold text-dark">{label}</span>
               ) : (
-                <Link to={to} className="breadcrumb__link">
+                <Link to={to} className="text-decoration-none text-secondary">
                   {label}
                 </Link>
               )}

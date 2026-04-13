@@ -1,21 +1,21 @@
 import { useEffect, useMemo, useReducer, useRef } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import {
+  getCategories,
+  getProducts,
+  getPromos,
+} from "../services/catalogService";
 
-import Sidebar from "../components/Sidebar";
-import ProductGrid from "../components/ProductGrid2";
+import Sidebar from "../components/sidebar/Sidebar";
+import ProductGrid from "../components/productlist/ProductGrid";
 import ScrollToTop from "../components/ScrollToTop";
 import useProductFilters, {
   mapProduct,
   applyDiscounts,
   filterActivePromotions,
 } from "../hooks/useProductFilters";
-import { API_BASE } from "../utils/api";
 
-const fetchActivePromos = async (signal) => {
-  const { data } = await axios.get(`${API_BASE}/uu-dai`, { signal });
-  return filterActivePromotions(data);
-};
+const fetchActivePromos = async () => filterActivePromotions(await getPromos());
 
 // lấy ra id từ objId của mongo
 const getId = (obj) => obj?.$oid ?? obj;
@@ -70,16 +70,18 @@ export default function DanhMucPage() {
 
   // Fetch danh mục
   useEffect(() => {
-    const controller = new AbortController();
-    axios
-      .get(`${API_BASE}/danh-muc`, { signal: controller.signal })
-      .then(({ data }) =>
-        fetchDispatch({ type: "SET_CATEGORIES", payload: data }),
-      )
+    let mounted = true;
+    getCategories()
+      .then((data) => {
+        if (!mounted) return;
+        fetchDispatch({ type: "SET_CATEGORIES", payload: data });
+      })
       .catch((err) => {
-        if (!axios.isCancel(err)) console.error("Lỗi tải danh mục:", err);
+        if (mounted) console.error("Lỗi tải danh mục:", err);
       });
-    return () => controller.abort();
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   // Fetch sản phẩm theo slug
@@ -97,11 +99,9 @@ export default function DanhMucPage() {
 
     fetchDispatch({ type: "FETCH_START" });
 
-    Promise.all([
-      axios.get(`${API_BASE}/san-pham`, { signal: controller.signal }),
-      fetchActivePromos(controller.signal),
-    ])
-      .then(([{ data: sanPhamList }, uuDaiList]) => {
+    Promise.all([getProducts(), fetchActivePromos()])
+      .then(([sanPhamList, uuDaiList]) => {
+        if (controller.signal.aborted) return;
         const filtered = applyDiscounts(
           sanPhamList
             .filter((sp) => {
@@ -117,10 +117,10 @@ export default function DanhMucPage() {
         fetchDispatch({ type: "FETCH_SUCCESS", payload: filtered });
       })
       .catch((err) => {
-        if (!axios.isCancel(err)) {
+        if (!controller.signal.aborted) {
           fetchDispatch({
             type: "FETCH_ERROR",
-            payload: err.response?.data?.message ?? err.message,
+            payload: err.message,
           });
         }
       });
@@ -157,7 +157,7 @@ export default function DanhMucPage() {
 
   return (
     <>
-      <div className="container-fluid px-5">
+      <div className="container-fluid px-5 mb-4">
         <h1 className="fs-4 fw-bold text-dark mb-1">{category.tenDanhMuc}</h1>
         <div className="row">
           <div className="col-md-3 pe-4">
@@ -169,7 +169,7 @@ export default function DanhMucPage() {
               products={products}
             />
           </div>
-          <div className="col-md-9">
+          <div className="col-md-9 mb-4">
             <ProductGrid
               products={sortedProducts}
               sortBy={sortBy}

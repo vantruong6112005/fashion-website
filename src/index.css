@@ -4,6 +4,55 @@ body {
   font-family: "Be Vietnam Pro", sans-serif;
 }
 
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border: 2px solid #8d90a1;
+  border-radius: 8px;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+input[type="checkbox"]:hover,
+input[type="radio"]:hover {
+  border-color: #4e62cf;
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  border-color: #2b44c8;
+  background: #f0f3ff;
+}
+
+input[type="checkbox"]:checked::after {
+  content: "";
+  width: 9px;
+  height: 14px;
+  border: solid #2b44c8;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+input[type="radio"]:checked::after {
+  content: "";
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #2b44c8;
+}
+
 .carousel-item img {
   height: 520px;
   object-fit: cover;

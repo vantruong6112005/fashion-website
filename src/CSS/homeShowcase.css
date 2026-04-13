@@ -1,0 +1,221 @@
+.home-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0 auto;
+}
+
+.home-category-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.home-category-tabs__button {
+  border: none;
+  border-radius: 999px;
+  background: #dedee0;
+  color: #111;
+  font-weight: 700;
+  padding: 10px 26px;
+}
+
+.home-category-tabs__button.is-active {
+  background: #000;
+  color: #fff;
+}
+
+.home-category-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.home-category-card {
+  text-decoration: none;
+}
+
+.home-category-card__image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #ddd;
+}
+
+.home-category-card__label {
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+  color: #151515;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.home-sport-block {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.home-sport-banner {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.home-sport-banner__image {
+  width: 100%;
+  min-height: 300px;
+  object-fit: cover;
+}
+
+.home-sport-banner__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 40px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.04));
+}
+
+.home-sport-banner__title {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.home-sport-banner__cta {
+  text-decoration: none;
+  color: #111;
+  background: #fff;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.home-sport-products {
+  position: relative;
+  /* padding: 0 44px; */
+}
+
+.home-sport-products__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.home-sport-products__title {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.4vw, 2.5rem);
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.home-sport-products__more {
+  color: #000;
+  font-size: 1.05rem;
+}
+
+.home-sport-products__list {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+}
+
+.home-sport-products__list::-webkit-scrollbar {
+  display: none;
+}
+
+.home-sport-card {
+  text-decoration: none;
+  color: #111;
+  min-width: 272px;
+  max-width: 272px;
+  scroll-snap-align: start;
+}
+
+.home-sport-card__image-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ddd;
+}
+
+.home-sport-card__image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.home-sport-card__name {
+  margin-top: 10px;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.home-sport-card__price {
+  margin-top: 6px;
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.home-sport-products__arrow {
+  align-items: center;
+  position: absolute;
+  top: 58%;
+  transform: translateY(-50%);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  font-size: 1.3rem;
+  z-index: 2;
+}
+
+.home-sport-products__arrow--left {
+  left: -6vb;
+}
+
+.home-sport-products__arrow--right {
+  right: -6vb;
+}
+
+@media (max-width: 992px) {
+  .home-category-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .home-sport-banner__overlay {
+    padding: 24px;
+  }
+
+  .home-sport-products {
+    padding: 0;
+  }
+
+  .home-sport-products__arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .home-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-sport-card {
+    min-width: 82vw;
+    max-width: 82vw;
+  }
+}

@@ -22,18 +22,18 @@ function formatDate(rawDate) {
 export default function PromoBanner({ promos = [] }) {
   const [idx, setIdx] = useState(0);
 
-  // Reset to first slide whenever the promo list changes
+  // Luon quay ve banner dau tien khi danh sach uu dai thay doi.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIdx(0);
   }, [promos]);
 
-  // Auto-advance every 4 s
+  // Tu dong chuyen banner moi sau 5 giay.
   useEffect(() => {
     if (promos.length <= 1) return;
     const timer = setInterval(
       () => setIdx((prev) => (prev + 1) % promos.length),
-      4000,
+      5000,
     );
     return () => clearInterval(timer);
   }, [promos.length]);

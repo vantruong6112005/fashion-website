@@ -52,6 +52,15 @@ export function filterActivePromotions(promos = [], nowTs = Date.now()) {
   return promos.filter((promo) => isPromotionActive(promo, nowTs));
 }
 
+export function filterNewestProductsByDays(products = [], days = 100) {
+  const nowTs = Date.now();
+  const rangeMs = Math.max(1, Number(days) || 100) * 24 * 60 * 60 * 1000;
+  return products.filter((product) => {
+    const ts = Number(product?.ngayThemTs || 0);
+    return ts > 0 && nowTs - ts <= rangeMs;
+  });
+}
+
 export function normalizeSearchText(text) {
   return String(text ?? "")
     .normalize("NFD")
@@ -210,16 +219,6 @@ function reducer(state, action) {
     case "TOGGLE_FILTER": {
       const { filterType, value } = action.payload;
       const current = state.activeFilters[filterType];
-
-      if (filterType === "boLocGia") {
-        return {
-          ...state,
-          activeFilters: {
-            ...state.activeFilters,
-            [filterType]: current.includes(value) ? [] : [value],
-          },
-        };
-      }
 
       return {
         ...state,

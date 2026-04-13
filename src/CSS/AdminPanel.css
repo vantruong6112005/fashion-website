@@ -1,0 +1,173 @@
+.admin-panel .card {
+  border: 1px solid #e9ecef;
+}
+
+.admin-panel-shell {
+  background: #f8f9fa;
+}
+
+.admin-layout {
+  min-height: 820px;
+}
+
+.admin-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.admin-nav-btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-weight: 600;
+  color: #212529;
+}
+
+.admin-nav-btn:hover {
+  background: #e9ecef;
+}
+
+.admin-nav-btn.active {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.admin-content-wrap {
+  min-width: 0;
+}
+
+.admin-topbar {
+  min-height: 78px;
+}
+
+.admin-search {
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f2f3f5;
+  padding: 8px 12px;
+}
+
+.admin-search .form-control {
+  background: transparent;
+  box-shadow: none;
+}
+
+.admin-stat-card {
+  border: 1px solid #d8dee3;
+  border-radius: 12px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+}
+
+.admin-card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-panel .table td,
+.admin-panel .table th {
+  vertical-align: middle;
+}
+
+.admin-panel .admin-scroll {
+  max-height: 420px;
+  overflow: auto;
+}
+
+.admin-thumb {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #dee2e6;
+}
+
+.admin-thumb--empty {
+  background: #f1f3f5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-compact-table tbody td {
+  font-size: 0.93rem;
+}
+
+.admin-panel .product-color-card {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.admin-panel .preview-box {
+  border: 1px dashed #ced4da;
+  border-radius: 8px;
+  padding: 8px;
+  min-height: 120px;
+  background: #fff;
+}
+
+.admin-checkbox-list {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 8px;
+  max-height: 138px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+}
+
+.admin-checkbox-input {
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 3px !important;
+  margin: 0;
+}
+
+.admin-icon-btn {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.admin-icon-btn img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+@media (max-width: 991.98px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+  }
+}

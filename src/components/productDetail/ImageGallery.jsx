@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from "react";
-import { API_HOST } from "../../utils/api";
+import { resolveImageUrl } from "../../utils/image";
 
 // Hien thi bo suu tap anh va ho tro zoom theo vi tri chuot.
 export default function ImageGallery({ images, productName }) {
@@ -27,7 +27,7 @@ export default function ImageGallery({ images, productName }) {
             onClick={() => setMainIdx(i)}
           >
             <img
-              src={`${API_HOST}${img}`}
+              src={resolveImageUrl(img)}
               alt={`${productName} ${i + 1}`}
               loading="lazy"
             />
@@ -46,7 +46,7 @@ export default function ImageGallery({ images, productName }) {
         }
       >
         <img
-          src={`${API_HOST}${images[mainIdx]}`}
+          src={resolveImageUrl(images[mainIdx])}
           alt={productName}
           className="pd-gallery__main-img"
         />

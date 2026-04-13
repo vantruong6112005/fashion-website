@@ -1,0 +1,227 @@
+.collection-page,
+.collection-detail-page {
+  padding-top: 8px;
+  padding-bottom: 28px;
+}
+
+.collection-page__hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
+  padding: 8px 0 24px;
+}
+
+.collection-page__hero-copy {
+  margin: 0 auto;
+  max-width: 760px;
+}
+
+.collection-page__kicker {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #0f3b9e;
+}
+
+.collection-page__title {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 0.95;
+  font-weight: 900;
+}
+
+.collection-page__lead {
+  margin: 14px 0 0;
+  max-width: 760px;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #556070;
+}
+
+.collection-page__state {
+  padding: 36px 0;
+  color: #556070;
+  font-size: 1rem;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.collection-card {
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  /* min-height: 100%; */
+  width: 90vh;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.collection-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
+}
+
+.collection-card__image-wrap {
+  /* aspect-ratio: 1 / 1.08; */
+  background: linear-gradient(180deg, #f5f6fb 0%, #eceff8 100%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.collection-card__image {
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: cover;
+}
+
+.collection-card__body {
+  padding: 20px 20px 24px;
+}
+
+.collection-card__eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: #0f3b9e;
+}
+
+.collection-card__title {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.collection-card__slogan {
+  margin: 12px 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #111827;
+}
+
+.collection-card__desc {
+  margin: 12px 0 0;
+  color: #5b6475;
+  line-height: 1.65;
+}
+
+.collection-card__cta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 18px;
+  font-weight: 700;
+  color: #0f3b9e;
+}
+
+.collection-card__cta::after {
+  content: ">";
+  margin-left: 8px;
+}
+
+.collection-detail-hero {
+  background-color: #eceff8;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1.02fr 1.6fr;
+  gap: 28px;
+  align-items: stretch;
+  margin-top: 10px;
+}
+
+.collection-detail-hero__copy {
+  padding: 10px 0 0;
+}
+
+.collection-detail-hero__title {
+  margin: 0;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 0.95;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.collection-detail-hero__intro {
+  margin: 18px 0 0;
+  color: #254bdd;
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.collection-detail-hero__text {
+  margin-top: 20px;
+  color: #111827;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.collection-detail-hero__text p {
+  margin: 0 0 16px;
+}
+
+.collection-detail-hero__visual {
+  min-height: 100%;
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: 0 22px 50px rgba(15, 23, 42, 0.12);
+}
+
+.collection-detail-hero__visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .collection-grid,
+  .collection-detail-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .collection-page__hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .collection-detail-hero__visual img {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 575px) {
+  .collection-page,
+  .collection-detail-page {
+    padding-top: 0;
+  }
+
+  .collection-card__body {
+    padding: 16px;
+  }
+
+  .collection-card__title {
+    font-size: 1.25rem;
+  }
+}

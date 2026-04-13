@@ -1,187 +1,252 @@
-import starIcon from "../../assets/images/icon/star.svg";
+import editIcon from "../../assets/images/icon/edit.svg";
+import deleteIcon from "../../assets/images/icon/delete.svg";
 
-// Render tung the danh gia cua khach hang.
-function ReviewCard({ review }) {
+function ReviewCard({
+  review,
+  isOwn,
+  isEditingOwnReview,
+  onEdit,
+  onDelete,
+  reviewSubmitting,
+}) {
   return (
-    <div className="pd-review-card">
+    <div
+      className={`pd-review-card ${isOwn ? "pd-review-card--own" : ""} ${isOwn && isEditingOwnReview ? "pd-review-card--editing" : ""}`}
+    >
       <div className="pd-review-card__header">
-        <img
-          src={review.nguoiDung.anhDaiDien || "/no-avatar.png"}
-          alt={review.nguoiDung.username}
-          className="pd-review-card__avatar"
-          onError={(e) => {
-            e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(review.nguoiDung.username)}&background=111&color=fff&size=40`;
-          }}
-        />
-        <div>
+        <div className="pd-review-card__meta">
           <div className="pd-review-card__name">
-            {review.nguoiDung.username}
+            {review?.nguoiDung?.username || "Khách hàng"}
           </div>
-          <div className="d-flex gap-1">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <svg key={i} width="12" height="12" viewBox="0 0 20 20">
-                <polygon
-                  points="10,1 12.9,7 19.5,7.6 14.8,11.8 16.5,18.5 10,14.8 3.5,18.5 5.2,11.8 0.5,7.6 7.1,7"
-                  fill={i <= review.diemDanhGia ? "#f59e0b" : "#e5e7eb"}
-                />
-              </svg>
-            ))}
+          {isOwn && <div className="pd-review-card__badge">Của bạn</div>}
+          <div className="d-flex align-items-center gap-2">
+            <span className="fw-semibold">Đánh giá:</span>
+            <div className="d-flex gap-1">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <span
+                  key={i}
+                  className={`pd-review-star ${i <= Number(review?.diemDanhGia || 0) ? "is-active" : ""}`}
+                >
+                  ★
+                </span>
+              ))}
+            </div>
           </div>
         </div>
-        <span className="pd-review-card__date ms-auto">
+        <span className="pd-review-card__date">
           {new Date(review.ngayTao?.$date || review.ngayTao).toLocaleDateString(
             "vi-VN",
           )}
         </span>
       </div>
-      <p className="pd-review-card__content">{review.noiDung}</p>
+      <p className="pd-review-card__content">
+        <span className="fw-semibold">Nhận xét:</span> {review.noiDung}
+      </p>
+      {isOwn && (
+        <div className="pd-review-card__actions">
+          <button
+            type="button"
+            className="pd-review-card__action-btn"
+            onClick={onEdit}
+            disabled={reviewSubmitting}
+            title="Sửa đánh giá"
+            aria-label="Sửa đánh giá"
+          >
+            <img src={editIcon} alt="edit" />
+          </button>
+          <button
+            type="button"
+            className="pd-review-card__action-btn pd-review-card__action-btn--delete"
+            onClick={onDelete}
+            disabled={reviewSubmitting}
+            title="Xóa đánh giá"
+            aria-label="Xóa đánh giá"
+          >
+            <img src={deleteIcon} alt="delete" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
 
-// Render thong ke so luong danh gia theo tung muc sao.
-function StarSidebarItem({ stars, count }) {
+function StarSidebarItem({ stars, count, total }) {
+  const width = total > 0 ? Math.round((count / total) * 100) : 0;
   return (
-    <div className="pd-reviews__sidebar-row">
-      <span className="pd-reviews__sidebar-stars-num">{stars}</span>
-      <div className="pd-reviews__sidebar-stars-icons" aria-hidden="true">
-        {Array.from({ length: stars }, (_, i) => (
-          <img key={`${stars}-${i}`} src={starIcon} alt="" />
-        ))}
+    <div className="pd-reviews__bar-row">
+      <span className="pd-reviews__bar-label">{stars}★</span>
+      <div className="pd-reviews__bar-track">
+        <span className="pd-reviews__bar-fill" style={{ width: `${width}%` }} />
       </div>
-      <span className="pd-reviews__sidebar-count">({count})</span>
+      <span className="pd-reviews__bar-count">{count}</span>
     </div>
   );
 }
 
-// Hien thi khu vuc tong hop va danh sach danh gia co phan trang.
 export default function ProductReviewsSection({
   product,
   totalReviewCount,
   reviewCountsByStar,
-  fitPercent,
-  reviewStartIndex,
-  reviewEndIndex,
-  pagedReviews,
-  totalReviewPages,
-  safeReviewPage,
-  setCurrentReviewPage,
+  reviews,
+  ownReviewId,
+  hasOwnReview,
+  isEditingOwnReview,
+  hasMoreReviews,
+  loadingMoreReviews,
+  onLoadMoreReviews,
+  isAuthenticated,
+  reviewRating,
+  reviewHover,
+  setReviewRating,
+  setReviewHover,
+  reviewComment,
+  setReviewComment,
+  onSubmitReview,
+  editingReviewId,
+  onCancelEditReview,
+  onEditOwnReview,
+  onDeleteOwnReview,
+  reviewSubmitting,
+  reviewError,
+  reviewMessage,
 }) {
+  const currentStar = reviewHover || reviewRating;
+  const shouldShowReviewForm = !hasOwnReview || isEditingOwnReview;
+
   return (
     <section className="pd-reviews mt-5">
-      <div className="pd-reviews__body">
-        <aside className="pd-reviews__sidebar">
-          <h3 className="pd-reviews__sidebar-title">Phân loại đánh giá</h3>
+      <h2 className="pd-reviews__heading">Đánh giá sản phẩm</h2>
+
+      <div className="pd-reviews__summary">
+        <div className="pd-reviews__score-col">
+          <div className="pd-reviews__score-num">
+            {Number(product.diemSoTrungBinh || 0).toFixed(1)}/5
+          </div>
+          <p className="pd-reviews__score-note">
+            {totalReviewCount} đánh giá và nhận xét
+          </p>
+        </div>
+        <div className="pd-reviews__bars-col">
           {[5, 4, 3, 2, 1].map((star) => (
             <StarSidebarItem
               key={star}
               stars={star}
               count={reviewCountsByStar[star]}
+              total={totalReviewCount}
             />
           ))}
-        </aside>
+        </div>
+      </div>
 
-        <div className="pd-reviews__main">
-          <div className="pd-reviews__overview">
-            <h2 className="pd-reviews__heading">Đánh giá sản phẩm</h2>
-
-            <div className="pd-reviews__score-wrap">
-              <span className="pd-reviews__score-num">
-                {Number(product.diemSoTrungBinh || 0).toFixed(1)}
-              </span>
-              <div>
-                <div className="pd-reviews__score-stars">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <svg key={i} width="32" height="32" viewBox="0 0 20 20">
-                      <polygon
-                        points="10,1 12.9,7 19.5,7.6 14.8,11.8 16.5,18.5 10,14.8 3.5,18.5 5.2,11.8 0.5,7.6 7.1,7"
-                        fill={
-                          i <= Math.round(Number(product.diemSoTrungBinh || 0))
-                            ? "#f5b301"
-                            : "#e5e7eb"
-                        }
-                      />
-                    </svg>
-                  ))}
-                </div>
-                <p className="pd-reviews__score-note">
-                  Dựa trên {totalReviewCount} đánh giá từ khách hàng
-                </p>
-              </div>
-            </div>
-
-            <div className="pd-reviews__fit">
-              <h3 className="pd-reviews__fit-title">Phù hợp với cơ thể</h3>
-              {[
-                { key: "tight", label: "Chật" },
-                { key: "fit", label: "Đúng kích thước" },
-                { key: "loose", label: "Rộng" },
-              ].map((item) => (
-                <div key={item.key} className="pd-reviews__fit-row">
-                  <span className="pd-reviews__fit-label">{item.label}</span>
-                  <div className="pd-reviews__fit-bar">
-                    <span
-                      className="pd-reviews__fit-fill"
-                      style={{ width: `${fitPercent[item.key]}%` }}
-                    />
-                  </div>
-                  <span className="pd-reviews__fit-value">
-                    {fitPercent[item.key]}%
-                  </span>
-                </div>
+      {shouldShowReviewForm && (
+        <form className="pd-review-form" onSubmit={onSubmitReview}>
+          <div className="pd-review-form__row">
+            <span className="pd-review-form__label">Đánh giá</span>
+            <div className="pd-review-stars-input">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button
+                  key={star}
+                  type="button"
+                  className={`pd-review-stars-input__star ${star <= currentStar ? "is-active" : ""}`}
+                  onMouseEnter={() => setReviewHover(star)}
+                  onMouseLeave={() => setReviewHover(0)}
+                  onClick={() => setReviewRating(star)}
+                  aria-label={`${star} sao`}
+                >
+                  ★
+                </button>
               ))}
             </div>
           </div>
 
-          <div className="pd-reviews__toolbar">
-            <span className="pd-reviews__showing">
-              Hiển thị đánh giá {reviewStartIndex + 1}-{reviewEndIndex}
-            </span>
+          <div className="pd-review-form__row pd-review-form__row--column">
+            <label
+              className="pd-review-form__label"
+              htmlFor="pd-review-comment"
+            >
+              Nhận xét
+            </label>
+            <textarea
+              id="pd-review-comment"
+              className="pd-review-form__textarea"
+              rows={3}
+              placeholder="Nhập nhận xét của bạn"
+              value={reviewComment}
+              onChange={(e) => setReviewComment(e.target.value)}
+            />
           </div>
 
-          <div className="pd-reviews__list">
-            {pagedReviews.map((r, idx) => (
-              <ReviewCard
-                key={r.danhGiaId?.$oid || `${r.ngayTao || "review"}-${idx}`}
-                review={r}
-              />
-            ))}
-          </div>
-
-          {totalReviewPages > 1 && (
-            <div className="pd-reviews__pagination">
-              <button
-                className="pd-reviews__page-btn"
-                onClick={() => setCurrentReviewPage((p) => Math.max(1, p - 1))}
-                disabled={safeReviewPage === 1}
-              >
-                Trước
-              </button>
-
-              {Array.from({ length: totalReviewPages }, (_, i) => i + 1).map(
-                (page) => (
-                  <button
-                    key={page}
-                    className={`pd-reviews__page-btn ${page === safeReviewPage ? "pd-reviews__page-btn--active" : ""}`}
-                    onClick={() => setCurrentReviewPage(page)}
-                  >
-                    {page}
-                  </button>
-                ),
-              )}
-
-              <button
-                className="pd-reviews__page-btn"
-                onClick={() =>
-                  setCurrentReviewPage((p) => Math.min(totalReviewPages, p + 1))
-                }
-                disabled={safeReviewPage === totalReviewPages}
-              >
-                Sau
-              </button>
+          {!isAuthenticated && (
+            <div className="pd-review-form__hint">
+              Vui lòng đăng nhập để gửi đánh giá.
             </div>
           )}
-        </div>
+          {reviewError && (
+            <div className="pd-review-form__error">{reviewError}</div>
+          )}
+          {reviewMessage && (
+            <div className="pd-review-form__success">{reviewMessage}</div>
+          )}
+
+          <button
+            type="submit"
+            className="pd-review-form__submit"
+            disabled={!isAuthenticated || reviewSubmitting}
+          >
+            {reviewSubmitting
+              ? "Đang gửi..."
+              : editingReviewId
+                ? "Cập nhật đánh giá"
+                : "Gửi đánh giá"}
+          </button>
+          {editingReviewId && (
+            <button
+              type="button"
+              className="pd-review-form__cancel"
+              onClick={onCancelEditReview}
+              disabled={reviewSubmitting}
+            >
+              Hủy chỉnh sửa
+            </button>
+          )}
+        </form>
+      )}
+
+      <div className="pd-reviews__list">
+        {reviews.length === 0 ? (
+          <p className="pd-reviews__empty">Chưa có đánh giá nào.</p>
+        ) : (
+          reviews.map((r, idx) => (
+            <ReviewCard
+              key={r.danhGiaId?.$oid || `${r.ngayTao || "review"}-${idx}`}
+              review={r}
+              isOwn={
+                String(
+                  r.danhGiaId?.$oid ||
+                    r.danhGiaId ||
+                    r._id?.$oid ||
+                    r._id ||
+                    "",
+                ) === String(ownReviewId || "")
+              }
+              onEdit={onEditOwnReview}
+              onDelete={onDeleteOwnReview}
+              isEditingOwnReview={isEditingOwnReview}
+              reviewSubmitting={reviewSubmitting}
+            />
+          ))
+        )}
+
+        {hasMoreReviews && (
+          <button
+            type="button"
+            className="pd-reviews__more-btn"
+            onClick={onLoadMoreReviews}
+            disabled={loadingMoreReviews}
+          >
+            {loadingMoreReviews ? "Đang tải..." : "Xem thêm đánh giá"}
+          </button>
+        )}
       </div>
     </section>
   );

@@ -1,29 +1,7 @@
-.breadcrumb__list {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  padding: 12px 0;
-  margin: 0;
-  font-size: 15px;
+.app-breadcrumb {
+  --bs-breadcrumb-divider: ">";
 }
 
-.breadcrumb__item {
-  display: flex;
-  align-items: center;
-  color: #888;
-}
-
-.breadcrumb__link {
-  color: #888;
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-.breadcrumb__link:hover {
-  color: #111;
-}
-
-.breadcrumb__current {
-  color: #222;
-  font-weight: 600;
+.app-breadcrumb .breadcrumb {
+  font-size: 0.95rem;
 }

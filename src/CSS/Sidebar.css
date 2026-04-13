@@ -1,5 +1,4 @@
-.sidebar {
-  /* width: 240px; */
+.filter-sidebar {
   flex-shrink: 0;
   position: sticky;
   top: 56px;
@@ -7,150 +6,58 @@
   overflow-y: auto;
 }
 
-.sidebar__title {
-  font-weight: 750;
-  font-size: 16px;
-  color: #111;
-  padding: 3px 0;
-}
-
-.sidebar__count {
-  font-size: 14px;
-  color: #888;
-}
-
-.sidebar__clear-btn {
-  font-size: 12px;
+.filter-sidebar__clear {
+  font-size: 0.8rem;
   color: #e63946;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0 0 10px;
-  font-family: inherit;
 }
 
-.sidebar__clear-btn:hover {
+.filter-sidebar__clear:hover {
   text-decoration: underline;
 }
 
-/* FilterSection */
-.filter-section {
+.filter-group {
   padding-bottom: 12px;
   margin-bottom: 4px;
-  border: none;
 }
 
-.filter-section__toggle {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 12px 0;
+.filter-group__toggle {
   font-size: 14px;
   color: #888;
   font-weight: 700;
-  font-family: inherit;
 }
 
-.filter-section__toggle:hover {
+.filter-group__toggle:hover {
   color: #000;
 }
 
-.filter-section__icon {
+.filter-group__icon {
   font-size: 18px;
   line-height: 1;
   color: #888;
 }
 
-.filter-section__body {
-  padding-top: 4px;
-}
-
-/*CheckRow */
-.check-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 5px 0;
-  cursor: pointer;
-  font-size: 14px;
-  color: #444;
-  -webkit-user-select: none;
-}
-
-.check-row:hover {
-  color: #111;
-}
-
-.check-row__dot {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 1.5px solid #bbb;
-  display: inline-block;
-  flex-shrink: 0;
-  transition: border 0.15s;
-  box-sizing: border-box;
-}
-
-.check-row__dot--checked {
-  border: 5px solid #111;
-}
-
-.check-row__input {
-  display: none;
-}
-
-/* ── Size buttons ── */
-.size-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding-top: 4px;
-}
-
-.size-btn {
-  padding: 5px 12px;
-  border: 1.5px solid #ddd;
-  border-radius: 6px;
-  background: #fff;
-  color: #444;
+.filter-size-btn {
+  min-width: 44px;
   font-size: 13px;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.15s;
 }
 
-.size-btn:hover {
-  border-color: #999;
-}
-
-.size-btn--active {
-  border-color: #111;
-  background: #111;
-  color: #fff;
-}
-
-/* Color dots */
-.color-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding-top: 4px;
-}
-
-.color-dot {
+.filter-color-chip {
   width: 26px;
   height: 26px;
   border-radius: 50%;
   border: 2px solid #ddd;
   cursor: pointer;
-  transition: transform 0.15s;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
 }
 
-.color-dot:hover {
+.filter-color-chip:hover {
   transform: scale(1.2);
+}
+
+.filter-color-chip--active {
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 3px #111;
 }

@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 import Footer from "../components/Footer";
 import Breadcrumb from "../components/Breadcrumb";
-import Header2 from "../components/Header2";
 
 function ScrollReset() {
   const { pathname } = useLocation();
@@ -14,12 +13,19 @@ function ScrollReset() {
 }
 
 export default function MainLayout({ children }) {
+  const { pathname } = useLocation();
+  const isBannerPage =
+    pathname === "/hang-moi-ve" ||
+    pathname === "/uu-dai" ||
+    pathname === "/admin" ||
+    pathname === "/bo-suu-tap" ||
+    pathname.startsWith("/bo-suu-tap/");
+
   return (
     <>
       <ScrollReset />
-      {/* <Header /> */}
-      <Header2 />
-      <Breadcrumb />
+      <Header />
+      {!isBannerPage && <Breadcrumb />}
       {children}
       <Footer />
     </>

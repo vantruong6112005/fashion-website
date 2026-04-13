@@ -1,20 +1,31 @@
 import bannerImg from "../assets/images/banner-hang-moi-ve.jpg";
 import "../CSS/banner.css";
 
-export default function ShopBanner() {
+export default function ShopBanner({
+  title = "Hàng Mới Về",
+  description = "Thời trang nam mẫu mới, cập nhật xu hướng,\nphong cách hiện đại, chất liệu cao cấp.",
+  buttonText = "Khám phá ngay",
+  image = bannerImg,
+}) {
+  const descriptionLines = String(description).split("\n");
+
   return (
     <section className="shop-banner">
-      <img src={bannerImg} alt="Hàng mới về" />
+      <img src={image} alt={title} />
 
       <div className="banner-overlay"></div>
 
       <div className="banner-content">
-        <h1>Hàng Mới Về</h1>
+        <h1>{title}</h1>
         <p>
-          Thời trang nam mẫu mới, cập nhật xu hướng,<br />
-          phong cách hiện đại, chất liệu cao cấp.
+          {descriptionLines.map((line, idx) => (
+            <span key={idx}>
+              {line}
+              {idx < descriptionLines.length - 1 && <br />}
+            </span>
+          ))}
         </p>
-        <button className="banner-btn">Khám phá ngay</button>
+        <button className="banner-btn">{buttonText}</button>
       </div>
     </section>
   );

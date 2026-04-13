@@ -1,0 +1,21 @@
+.cart-item-remove-btn {
+  border-radius: 8px;
+  transition:
+    background-color 0.16s ease,
+    transform 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.cart-item-remove-btn:hover {
+  background: #fee2e2;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(220, 38, 38, 0.18);
+}
+
+.cart-item-remove-btn img {
+  transition: transform 0.16s ease;
+}
+
+.cart-item-remove-btn:hover img {
+  transform: scale(1.08);
+}

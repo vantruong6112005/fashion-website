@@ -2,32 +2,45 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 
 import Home from "./pages/Home";
-import SieuTietKiem from "./pages/SieuTietKiem";
 import HangMoiVe from "./pages/HangMoiVe";
-import HangMoiVe2 from "./pages/HangMoiVe2";
 import UuDai from "./pages/UuDai";
 import GioHang from "./pages/GioHang";
-import ProductDetail from "./components/ProductDetail";
+import Checkout from "./pages/Checkout";
+import DonHangCuaToi from "./pages/DonHangCuaToi";
+import ProductDetail from "./components/productDetail/ProductDetail";
 import DanhMucPage from "./pages/DanhMuc";
+import BoSuuTapPage from "./pages/BoSuuTap";
+import BoSuuTapDetailPage from "./pages/BoSuuTapDetail";
+import AdminPanel from "./components/admin/AdminPanel";
 import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext";
 function App() {
   return (
     <BrowserRouter>
-      <CartProvider>
-        <MainLayout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/combo-sieu-tiet-kiem" element={<SieuTietKiem />} />
-            <Route path="/hang-moi-ve" element={<HangMoiVe />} />
-            <Route path="/hang-moi-ve-2" element={<HangMoiVe2 />} />
-            <Route path="/uu-dai" element={<UuDai />} />
-            <Route path="/gio-hang" element={<GioHang />} />
-            <Route path="/san-pham/:id" element={<ProductDetail />} />
-            <Route path="/:slug" element={<DanhMucPage />} />
-            <Route path="/:gioiTinh/:slug" element={<DanhMucPage />} />
-          </Routes>
-        </MainLayout>
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <MainLayout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/hang-moi-ve" element={<HangMoiVe />} />
+              <Route path="/uu-dai" element={<UuDai />} />
+              <Route path="/gio-hang" element={<GioHang />} />
+              <Route path="/thanh-toan" element={<Checkout />} />
+              <Route path="/thanh-toan/momo/return" element={<Checkout />} />
+              <Route path="/don-hang" element={<DonHangCuaToi />} />
+              <Route path="/bo-suu-tap" element={<BoSuuTapPage />} />
+              <Route
+                path="/bo-suu-tap/:slug"
+                element={<BoSuuTapDetailPage />}
+              />
+              <Route path="/admin" element={<AdminPanel />} />
+              <Route path="/san-pham/:id" element={<ProductDetail />} />
+              <Route path="/:slug" element={<DanhMucPage />} />
+              <Route path="/:gioiTinh/:slug" element={<DanhMucPage />} />
+            </Routes>
+          </MainLayout>
+        </CartProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
 }
