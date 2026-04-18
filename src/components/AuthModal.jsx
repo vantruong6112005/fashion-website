@@ -25,7 +25,7 @@ const normalizeAuthError = (message) => {
   return text || "Đã có lỗi xảy ra, vui lòng thử lại";
 };
 
-export default function AuthModal({ open, onClose }) {
+export default function AuthModal({ open, onClose, initialMode = "login" }) {
   const { login, register } = useAuth();
 
   const [mode, setMode] = useState("login");
@@ -50,6 +50,11 @@ export default function AuthModal({ open, onClose }) {
     setMessage("");
     setShowPassword(false);
   };
+
+  useEffect(() => {
+    if (!open) return;
+    setMode(initialMode === "register" ? "register" : "login");
+  }, [open, initialMode]);
 
   useEffect(() => {
     if (!open) return;

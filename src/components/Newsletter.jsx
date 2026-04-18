@@ -1,7 +1,10 @@
 import '../CSS/newsletter.css'
 import modelImg from '../assets/images/letters.png'
+import { useNavigate } from "react-router-dom";
 
 export default function Newsletter() {
+  const navigate = useNavigate();
+
   return (
     <section className="newsletter-section">
       <div className="newsletter-overlay"></div>
@@ -20,7 +23,7 @@ export default function Newsletter() {
                 placeholder="Nhập email của bạn"
               />
 
-              <button>Đăng ký</button>
+              <button type="button" onClick={() => navigate("/dang-ky")}>Đăng ký</button>
             </div>
           </div>
 

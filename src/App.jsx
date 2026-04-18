@@ -7,6 +7,7 @@ import UuDai from "./pages/UuDai";
 import GioHang from "./pages/GioHang";
 import Checkout from "./pages/Checkout";
 import DonHangCuaToi from "./pages/DonHangCuaToi";
+import DangKy from "./pages/DangKy";
 import ProductDetail from "./components/productDetail/ProductDetail";
 import DanhMucPage from "./pages/DanhMuc";
 import BoSuuTapPage from "./pages/BoSuuTap";
@@ -28,6 +29,7 @@ function App() {
               <Route path="/thanh-toan" element={<Checkout />} />
               <Route path="/thanh-toan/momo/return" element={<Checkout />} />
               <Route path="/don-hang" element={<DonHangCuaToi />} />
+              <Route path="/dang-ky" element={<DangKy />} />
               <Route path="/bo-suu-tap" element={<BoSuuTapPage />} />
               <Route
                 path="/bo-suu-tap/:slug"
