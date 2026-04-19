@@ -15,6 +15,7 @@ import BoSuuTapDetailPage from "./pages/BoSuuTapDetail";
 import AdminPanel from "./components/admin/AdminPanel";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
+import GioiThieu from "./pages/GioiThieu";
 function App() {
   return (
     <BrowserRouter>
@@ -31,6 +32,7 @@ function App() {
               <Route path="/don-hang" element={<DonHangCuaToi />} />
               <Route path="/dang-ky" element={<DangKy />} />
               <Route path="/bo-suu-tap" element={<BoSuuTapPage />} />
+              <Route path="/gioi-thieu" element={<GioiThieu />} />
               <Route
                 path="/bo-suu-tap/:slug"
                 element={<BoSuuTapDetailPage />}

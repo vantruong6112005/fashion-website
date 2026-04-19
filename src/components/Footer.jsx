@@ -1,6 +1,7 @@
-import '../CSS/footer.css'
-import facebookIcon from '../assets/images/icon/facebook.png'
-import instargramIcon from '../assets/images/icon/instagram.png'
+import { Link } from "react-router-dom";
+import "../CSS/footer.css";
+import facebookIcon from "../assets/images/icon/facebook.png";
+import instargramIcon from "../assets/images/icon/instagram.png";
 
 export default function Footer() {
   return (
@@ -9,23 +10,26 @@ export default function Footer() {
 
       <div className="container footer-content py-5">
         <div className="row gy-4">
-
           <div className="col-md-4">
             <h3 className="fw-bold mb-3">FashionShop</h3>
             <p className="text-uppercase fw-semibold">
               Công ty cổ phần thời trang
             </p>
 
-            <p>📞 Hotline: <strong>1900 8079</strong></p>
+            <p>
+              📞 Hotline: <strong>1900 8079</strong>
+            </p>
             <p>🕒 8:30 – 19:00 (Tất cả các ngày)</p>
 
             <p className="mt-3">
-              <strong>VP phía Nam:</strong><br />
+              <strong>VP phía Nam:</strong>
+              <br />
               21–23 Nguyễn Văn Trỗi, P.8, Q.Phú Nhuận, TP.HCM
             </p>
 
             <p>
-              <strong>VP phía Nam:</strong><br />
+              <strong>VP phía Nam:</strong>
+              <br />
               186A Nam Kỳ Khởi Nghĩa, TP.HCM
             </p>
           </div>
@@ -33,7 +37,14 @@ export default function Footer() {
           <div className="col-md-2">
             <h6 className="footer-title">GIỚI THIỆU</h6>
             <ul className="footer-list">
-              <li>Giới thiệu</li>
+              <li>
+                <Link
+                  to="/gioi-thieu"
+                  className="text-decoration-none text-reset"
+                >
+                  Giới thiệu
+                </Link>
+              </li>
               <li>Blog</li>
               <li>Hệ thống cửa hàng</li>
               <li>Liên hệ</li>
@@ -58,10 +69,18 @@ export default function Footer() {
 
             <div className="d-flex gap-3 mb-4">
               <a href="https://facebook.com" target="_blank" rel="noreferrer">
-                <img src={facebookIcon} alt="Facebook" className="social-icon" />
+                <img
+                  src={facebookIcon}
+                  alt="Facebook"
+                  className="social-icon"
+                />
               </a>
               <a href="https://instagram.com" target="_blank" rel="noreferrer">
-                <img src={instargramIcon} alt="Instagram" className="social-icon" />
+                <img
+                  src={instargramIcon}
+                  alt="Instagram"
+                  className="social-icon"
+                />
               </a>
             </div>
 
@@ -73,7 +92,6 @@ export default function Footer() {
               <div className="payment-box">ATM</div>
             </div>
           </div>
-
         </div>
 
         <hr className="footer-divider" />
@@ -83,5 +101,5 @@ export default function Footer() {
         </p>
       </div>
     </footer>
-  )
+  );
 }
